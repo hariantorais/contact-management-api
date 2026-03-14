@@ -1,0 +1,21 @@
+version: "3.0"
+
+services:
+  # nama layanan
+  api-service:
+    # 1. instruksi untuk membagun image dari folder saat ini
+    build: .
+
+    # 2. nama kontainer yang akan muncul di docker desktop
+    container_name: contact-management-container
+
+    #3. pemetaan port (laptop:kontainer)
+    ports:
+      - "3000:3000"
+
+    #4. menghubungkan file .env ke dalam kontainer
+    env_file:
+      - .env
+
+    #5. kebijakan restart jika aplikasi crash (misal no internet)
+    restart: always
