@@ -10,8 +10,9 @@ app.use(express.json());
 app.use(helmet());
 app.use(
   cors({
-    origin: ["https://cm-demo.elijabah.com", "https://elijabah.com"],
-    method: ["GET", "POST", "PUT", "DELETE"],
+    origin: "*", // Izinkan semua sementara untuk testing
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   }),
 );
 
