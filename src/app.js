@@ -16,9 +16,17 @@ app.use(
   }),
 );
 
+app.use(errorMiddleware);
 // Menghubungkan route
 app.use("/api", apiRoute);
-
-app.use(errorMiddleware);
+app.get("/api/check", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "API Jendela Haramain - Elijabah Ready!",
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || "development",
+    database_connected: !!process.env.DATABASE_URL,
+  });
+});
 
 module.exports = app;
